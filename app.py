@@ -4,6 +4,20 @@ from datetime import datetime
 import random
 import os
 
+# --- 隐藏 Streamlit 默认的菜单和页脚 ---
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            /* 这一行是为了调整顶部空白，让内容靠上一点 */
+            .block-container {
+                padding-top: 1rem;
+            }
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
+
 # --- 1. 页面设置 ---
 st.set_page_config(page_title="Baby Kick Tracker", page_icon="👶")
 

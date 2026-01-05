@@ -6,29 +6,33 @@ import os
 
 st.set_page_config(page_title="Baby Kick Tracker", page_icon="👶")
 
-# --- 隐藏 Streamlit 默认的菜单和页脚 ---
+# --- 隐藏 Streamlit 所有的无关元素 (终极模糊匹配版) ---
 hide_st_style = """
             <style>
-            /* 1. 基础隐藏：菜单、头部、底部 */
+            /* 1. 隐藏顶部菜单和头部 */
             #MainMenu {visibility: hidden; display: none !important;}
             header {visibility: hidden; display: none !important;}
+            
+            /* 2. 隐藏底部 Footer */
             footer {visibility: hidden; display: none !important;}
             
-            /* 2. 🎯 核心狙击：隐藏那个红色的皇冠按钮 (Status Widget) */
-            [data-testid="stStatusWidget"] {visibility: hidden; display: none !important;}
+            /* 3. 🎯 核心杀招：使用 "模糊匹配" 隐藏皇冠按钮 */
+            /* 只要 class 名字里包含 'viewerBadge'，就隐藏 */
+            div[class*="viewerBadge"] {display: none !important;}
             
-            /* 3. 补充隐藏：隐藏工具栏和装饰元素 */
-            [data-testid="stToolbar"] {visibility: hidden; display: none !important;}
-            [data-testid="stDecoration"] {visibility: hidden; display: none !important;}
+            /* 只要 class 名字里包含 'statusWidget'，就隐藏 */
+            div[class*="statusWidget"] {display: none !important;}
             
-            /* 4. 调整布局：去掉顶部和底部的多余空白 */
+            /* 4. 隐藏其他可能的按钮 */
+            .stAppDeployButton {display: none !important;}
+            .stDeployButton {display: none !important;}
+            [data-testid="stDecoration"] {display: none !important;}
+            
+            /* 5. 调整布局 */
             .block-container {
                 padding-top: 1rem !important;
                 padding-bottom: 0rem !important;
             }
-            
-            /* 5. 如果它还没死，隐藏右下角所有 fixed 定位的 viewer badge */
-            div[class^='viewerBadge_'] {display: none !important;}
             </style>
             """
 st.markdown(hide_st_style, unsafe_allow_html=True)

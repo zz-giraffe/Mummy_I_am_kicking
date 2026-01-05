@@ -4,20 +4,28 @@ from datetime import datetime
 import random
 import os
 
+st.set_page_config(page_title="Baby Kick Tracker", page_icon="👶")
+
 # --- 隐藏 Streamlit 默认的菜单和页脚 ---
 hide_st_style = """
             <style>
-            #MainMenu {display: none !important;}
-            footer {display: none !important;}
-            header {display: none !important;}
+            #MainMenu {visibility: hidden; display: none !important;}
+            
+            header {visibility: hidden; display: none !important;}
+            
+            footer {visibility: hidden; display: none !important;}
+            footer:after {content:''; display: none !important;}
            
-            .stDeployButton {display: none !important;}
+            .stAppDeployButton {display: none !important;}
+            .viewerBadge_container__1QSob {display: none !important;}
+            [data-testid="stDecoration"] {display: none !important;}
+            
+            .block-container {
+                padding-top: 1rem !important;
+            }
             </style>
             """
 st.markdown(hide_st_style, unsafe_allow_html=True)
-
-# --- 1. 页面设置 ---
-st.set_page_config(page_title="Baby Kick Tracker", page_icon="👶")
 
 # --- 2. 定义数据文件和可爱的消息库 ---
 DATA_FILE = "kick_log.csv"

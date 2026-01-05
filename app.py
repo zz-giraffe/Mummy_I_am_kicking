@@ -7,13 +7,11 @@ import os
 # --- 隐藏 Streamlit 默认的菜单和页脚 ---
 hide_st_style = """
             <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            header {visibility: hidden;}
-            /* 这一行是为了调整顶部空白，让内容靠上一点 */
-            .block-container {
-                padding-top: 1rem;
-            }
+            #MainMenu {display: none !important;}
+            footer {display: none !important;}
+            header {display: none !important;}
+           
+            .stDeployButton {display: none !important;}
             </style>
             """
 st.markdown(hide_st_style, unsafe_allow_html=True)
